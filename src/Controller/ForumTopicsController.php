@@ -16,12 +16,21 @@ class ForumTopicsController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
+    public function index($forumName = null)
     {
         $this->paginate = [
             'contain' => ['Forums', 'Users']
         ];
-        $forumTopics = $this->paginate($this->ForumTopics);
+        $topics = $this->ForumTopics;
+        if ($forumName) {
+            $topics = $this->ForumTopics->find()->contain(
+                ['Forums' => function ($q) use ($forumName) {
+                    return $q
+                        ->where(['Forums.name' => $forumName]);
+                }]
+            );
+        }
+        $forumTopics = $this->paginate($topics);
 
         $this->set(compact('forumTopics'));
         $this->set('_serialize', ['forumTopics']);
