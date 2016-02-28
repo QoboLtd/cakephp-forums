@@ -3,6 +3,13 @@ $this->extend('QoboAdminPanel./Common/panel-wrapper');
 $this->assign('title', __d('QoboAdminPanel', 'Topics'));
 $this->assign('panel-title', __d('QoboAdminPanel', 'Topics information'));
 ?>
+<p class="text-right">
+    <?php echo $this->Html->link(
+        __('Add New'),
+        ['plugin' => $this->request->plugin, 'controller' => $this->request->controller, 'action' => 'add'],
+        ['class' => 'btn btn-primary']
+    ); ?>
+</p>
 <table class="table table-striped" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
