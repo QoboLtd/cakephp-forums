@@ -1,27 +1,7 @@
 <?php
-$this->extend('../Layout/TwitterBootstrap/dashboard');
-
-$this->start('tb_actions');
-?>
-    <li><?= $this->Html->link(__('List Forums'), ['action' => 'index']) ?></li>
-    <li><?= $this->Html->link(__('List Forum Posts'), ['controller' => 'ForumPosts', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Forum Post'), ['controller' => 'ForumPosts', 'action' => 'add']) ?> </li>
-    <li><?= $this->Html->link(__('List Forum Topics'), ['controller' => 'ForumTopics', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Forum Topic'), ['controller' => 'ForumTopics', 'action' => 'add']) ?> </li>
-<?php
-$this->end();
-
-$this->start('tb_sidebar');
-?>
-<ul class="nav nav-sidebar">
-    <li><?= $this->Html->link(__('List Forums'), ['action' => 'index']) ?></li>
-    <li><?= $this->Html->link(__('List Forum Posts'), ['controller' => 'ForumPosts', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Forum Post'), ['controller' => 'ForumPosts', 'action' => 'add']) ?> </li>
-    <li><?= $this->Html->link(__('List Forum Topics'), ['controller' => 'ForumTopics', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Forum Topic'), ['controller' => 'ForumTopics', 'action' => 'add']) ?> </li>
-</ul>
-<?php
-$this->end();
+$this->extend('QoboAdminPanel./Common/panel-wrapper');
+$this->assign('title', __d('QoboAdminPanel', 'Forums'));
+$this->assign('panel-title', __d('QoboAdminPanel', 'Forums information'));
 ?>
 <?= $this->Form->create($forum); ?>
 <fieldset>

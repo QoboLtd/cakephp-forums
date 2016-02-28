@@ -1,16 +1,8 @@
 <?php
-/* @var $this \Cake\View\View */
-$this->extend('../Layout/TwitterBootstrap/dashboard');
-$this->start('tb_actions');
+$this->extend('QoboAdminPanel./Common/panel-wrapper');
+$this->assign('title', __d('QoboAdminPanel', 'Topics'));
+$this->assign('panel-title', __d('QoboAdminPanel', 'Topics information'));
 ?>
-    <li><?= $this->Html->link(__('New Forum Topic'), ['action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Forums'), ['controller' => 'Forums', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Forum'), ['controller' => ' Forums', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New User'), ['controller' => ' Users', 'action' => 'add']); ?></li>
-<?php $this->end(); ?>
-<?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
-
 <table class="table table-striped" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
