@@ -10,7 +10,7 @@ $this->assign('panel-title', __d('QoboAdminPanel', 'Posts information'));
     echo $this->Form->input('forum_id', ['options' => $forums]);
     echo $this->Form->input('topic_id', ['options' => $forumTopics]);
     echo $this->Form->input('user_id', ['options' => $users]);
-    echo $this->Form->input('content');
+    echo $this->Form->input('content', ['type' => 'textarea', 'id' => 'editor1']);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Save")); ?>
