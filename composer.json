@@ -1,5 +1,5 @@
 {
-    "name": "your-name-here/Forum",
+    "name": "qobo/cakephp-forums",
     "description": "Forum plugin for CakePHP",
     "type": "cakephp-plugin",
     "require": {
