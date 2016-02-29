@@ -42,6 +42,11 @@ class ForumTopicsTable extends Table
             'joinType' => 'INNER',
             'className' => 'Forum.Users'
         ]);
+        $this->hasMany('ForumPosts', [
+            'foreignKey' => 'topic_id',
+            'className' => 'Forum.ForumPosts'
+        ]);
+
     }
 
     /**

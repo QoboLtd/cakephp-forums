@@ -3,6 +3,7 @@ $this->extend('QoboAdminPanel./Common/panel-wrapper');
 $this->assign('title', __d('QoboAdminPanel', 'Posts'));
 $this->assign('panel-title', __d('QoboAdminPanel', 'Posts information'));
 ?>
+<?= $this->Form->create($forumPost); ?>
 <fieldset>
     <legend><?= __('Add {0}', ['Forum Post']) ?></legend>
     <?php
