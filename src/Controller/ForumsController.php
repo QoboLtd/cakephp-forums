@@ -16,7 +16,7 @@ class ForumsController extends AppController
         $args = func_get_args();
         $topic = isset($args[0]) ? $args[0] : null;
         if (is_null($topic)) {
-            return $this->redirect(['controller' => 'ForumTopics', 'action' => 'add']);
+            return $this->redirect(['controller' => 'Forums', 'action' => 'add']);
         }
         $forum = $this->Forums->find('all')
             ->contain(['ForumTopics'])
