@@ -16,9 +16,26 @@ class AppController extends BaseController
     public function initialize()
     {
         parent::initialize();
+        if (!$this->_isFrontEndAction()) {
+            //Set the backend layout
+            $this->viewBuilder()->layout('QoboAdminPanel.basic');
+        }
+    }
+
     /**
-     * @todo: Forced to use QoboAdminPanel layout.
+     * This funtion defines the frontend actions of the plugin which are
+     * less than the backend actions.
+     *
+     * @param  string  $action given action|fallback to Request's action
+     * @return boolean         Boolean flag
      */
-        $this->viewBuilder()->layout('QoboAdminPanel.basic');
+    protected function _isFrontEndAction($action = null)
+    {
+        $frontendActions = ['display'];
+        if (is_null($action)) {
+            $action = $this->request->params['action'];
+        }
+
+        return in_array($action, $frontendActions);
     }
 }

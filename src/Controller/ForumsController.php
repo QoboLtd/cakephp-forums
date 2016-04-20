@@ -11,6 +11,20 @@ use Forum\Controller\AppController;
 class ForumsController extends AppController
 {
 
+    public function display()
+    {
+        $args = func_get_args();
+        $topic = isset($args[0]) ? $args[0] : null;
+        if (is_null($topic)) {
+            return $this->redirect(['controller' => 'Forums', 'action' => 'add']);
+        }
+        $forum = $this->Forums->find('all')
+            ->contain(['ForumTopics'])
+            ->where(['name' => $topic])
+            ->first();
+        $this->set(compact('forum'));
+    }
+
     /**
      * Index method
      *
