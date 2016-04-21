@@ -11,6 +11,17 @@ use Forum\Controller\AppController;
 class ForumTopicsController extends AppController
 {
 
+    public function display($topic = null)
+    {
+        $topic = $this->ForumTopics->findBySlug($topic)
+            ->contain([
+                'Forums',
+                'ForumPosts' => ['sort' => ['ForumPosts.created' => 'DESC']],
+            ])
+            ->first();
+        $this->set(compact('topic'));
+    }
+
     /**
      * Index method
      *
