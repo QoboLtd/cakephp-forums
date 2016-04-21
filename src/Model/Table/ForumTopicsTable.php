@@ -1,11 +1,15 @@
 <?php
 namespace Forum\Model\Table;
 
+use Cake\Datasource\EntityInterface;
+use Cake\Event\Event;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\Utility\Inflector;
 use Cake\Validation\Validator;
 use Forum\Model\Entity\ForumTopic;
+use \ArrayObject;
 
 /**
  * ForumTopics Model
@@ -62,6 +66,9 @@ class ForumTopicsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->notEmpty('slug');
+
+        $validator
             ->requirePresence('name', 'create')
             ->notEmpty('name');
 
@@ -84,5 +91,11 @@ class ForumTopicsTable extends Table
         $rules->add($rules->existsIn(['forum_id'], 'Forums'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         return $rules;
+    }
+
+    public function beforeRules(Event $event, EntityInterface $entity, ArrayObject $options)
+    {
+        $slug = Inflector::slug(strtolower($entity->name));
+        $entity->slug = $slug;
     }
 }
