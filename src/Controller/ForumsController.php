@@ -19,7 +19,7 @@ class ForumsController extends AppController
             return $this->redirect(['controller' => 'Forums', 'action' => 'add']);
         }
         $forum = $this->Forums->find('all')
-            ->contain(['ForumTopics'])
+            ->contain(['ForumTopics' => ['Users']])
             ->where(['name' => $topic])
             ->first();
         $this->set(compact('forum'));
