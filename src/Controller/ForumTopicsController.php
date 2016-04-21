@@ -13,10 +13,14 @@ class ForumTopicsController extends AppController
 
     public function display($topic = null)
     {
-        $topic = $this->ForumTopics->findBySlug($topic)
+        $topic = $this->ForumTopics->findById($topic)
             ->contain([
                 'Forums',
-                'ForumPosts' => ['sort' => ['ForumPosts.created' => 'DESC']],
+                'ForumPosts' => [
+                    'Users',
+                    'sort' => ['ForumPosts.created' => 'DESC']
+                ],
+                'Users'
             ])
             ->first();
         $this->set(compact('topic'));
