@@ -11,6 +11,11 @@ use Forum\Controller\AppController;
 class ForumsController extends AppController
 {
 
+    /**
+     * Display
+     *
+     * @return void
+     */
     public function display()
     {
         $args = func_get_args();

@@ -50,7 +50,6 @@ class ForumTopicsTable extends Table
             'foreignKey' => 'topic_id',
             'className' => 'Forum.ForumPosts'
         ]);
-
     }
 
     /**
@@ -93,6 +92,14 @@ class ForumTopicsTable extends Table
         return $rules;
     }
 
+    /**
+     * beforeRules
+     *
+     * @param Event $event Event
+     * @param EntityInterface $entity Entity
+     * @param ArrayObject $options Options
+     * @return void
+     */
     public function beforeRules(Event $event, EntityInterface $entity, ArrayObject $options)
     {
         $slug = Inflector::slug(strtolower($entity->name));

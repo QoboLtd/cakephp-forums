@@ -27,7 +27,6 @@ class ForumTopicsTableTest extends TestCase
         'plugin.forum.forum_topics',
         'plugin.forum.forums',
         'plugin.forum.forum_posts',
-        'plugin.forum.users'
     ];
 
     /**

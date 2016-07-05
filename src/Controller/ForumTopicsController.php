@@ -11,6 +11,12 @@ use Forum\Controller\AppController;
 class ForumTopicsController extends AppController
 {
 
+    /**
+     * Display
+     *
+     * @param mixed $topic Topic
+     * @return void
+     */
     public function display($topic = null)
     {
         $topic = $this->ForumTopics->findById($topic)
@@ -29,6 +35,7 @@ class ForumTopicsController extends AppController
     /**
      * Index method
      *
+     * @param string $forumName Forum name
      * @return \Cake\Network\Response|null
      */
     public function index($forumName = null)
